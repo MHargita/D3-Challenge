@@ -72,16 +72,14 @@ d3.csv("data.csv").then(function(censusData) {
 
     // State abbreviations
 
-    var stateGroup = chartGroup.append("g").selectAll("text")
-    .data(censusData)
+    chartGroup.selectAll("null").data(censusData)
     .enter()
     .append("text")
-    .classed("state-text", true)
-    .attr("x", d => xLinearScale(d.poverty))
-    // .attr("y"), d => yLinearScale(d.obesity))
-    .attr("transform", `translate(-10, 5)`)
     .text(d => d.abbr)
-    .attr("fill", "white");
+    .attr("x",d => xLinearScale(d.poverty))
+    .attr("y", d => yLinearScale(d.obesity))
+    .attr("text-anchor", "middle")
+    .attr('font-size', 10);
 
 
     // Step 6: Initialize tool tip
